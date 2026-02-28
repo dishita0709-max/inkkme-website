@@ -5,178 +5,176 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inkkme Tattoo Studio</title>
 
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-:root {
-  --black: #0b0b0b;
-  --orange: #ff7a00;
-  --white: #fff;
-  --gray: #999;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* GENERAL */
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-body {
-  background: var(--black);
-  color: var(--white);
-}
-a { color: var(--orange); text-decoration: none; }
-
-/* CONTAINER */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
+body{
+    background:#000;
+    color:#fff;
 }
 
-/* HEADER */
-.header {
-  height: 70vh;
-  background: #111; /* Replace with studio photo later */
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+/* ===== TOP PROFILE SECTION ===== */
+.header{
+    height:420px;
+    background:url('ADD-STUDIO-BACKGROUND.jpg') center/cover no-repeat;
+    position:relative;
 }
 
-.profile-top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.overlay{
+    background:rgba(0,0,0,0.65);
+    height:100%;
+    padding:20px;
 }
 
-.logo {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  letter-spacing: 1px;
+/* PROFILE BAR */
+.profile-bar{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-top:40px;
 }
 
-.stats {
-  display: flex;
-  gap: 25px;
-  font-size: 14px;
+.profile-pic{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:3px solid orange;
+    background:#111; /* ADD LOGO HERE */
 }
 
-.stat {
-  text-align: center;
+.stats{
+    display:flex;
+    gap:25px;
 }
 
-.stat strong {
-  display: block;
-  font-size: 18px;
+.stat{
+    text-align:center;
+    cursor:pointer;
 }
 
-.infinite {
-  display: inline-block;
-  animation: spin 4s linear infinite;
-  color: var(--orange);
+.stat span{
+    display:block;
+    font-weight:bold;
+    font-size:18px;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* INFINITY ANIMATION */
+.infinity{
+    width:60px;
+    height:30px;
+    border:3px solid orange;
+    border-radius:50%;
+    position:relative;
+    animation: infinityMove 2s linear infinite;
+}
+
+@keyframes infinityMove{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+
+.arrow{
+    animation: upDown 1s infinite;
+    color:orange;
+}
+
+@keyframes upDown{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+    100%{transform:translateY(0);}
 }
 
 /* BIO */
-.bio {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.4;
+.bio{
+    margin-top:25px;
 }
 
-.bio span { color: var(--orange); }
-
-/* HIGHLIGHTS */
-.highlights {
-  display: flex;
-  gap: 15px;
-  padding: 20px 0;
-  overflow-x: auto;
-  justify-content: center;
+.bio h2{
+    font-size:22px;
 }
 
-.highlight {
-  min-width: 70px;
-  text-align: center;
-  font-size: 12px;
+.bio p{
+    margin-top:6px;
+    font-size:14px;
+    line-height:1.5;
+    color:#ddd;
 }
 
-.highlight div {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  border: 2px solid var(--orange);
-  margin-bottom: 5px;
-  background: #222;
+/* ===== HIGHLIGHTS ===== */
+.highlights{
+    display:flex;
+    gap:15px;
+    margin:25px 0;
+    overflow-x:auto;
 }
 
-/* MAIN GRID */
-.section {
-  padding: 15px 0;
+.highlight{
+    text-align:center;
+    font-size:13px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  justify-items: center;
+.highlight div{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:2px solid orange;
+    background:#111; /* ADD HIGHLIGHT COVER */
+    margin-bottom:6px;
 }
 
-.card {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: linear-gradient(145deg, #111, #1b1b1b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 13px;
-  border-radius: 6px;
-  border: 1px solid #222;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* ===== MAIN GRID ===== */
+.main{
+    padding:25px;
 }
 
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 12px rgba(255,122,0,0.3);
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
 }
 
-/* CONTACT */
-.contact {
-  padding: 20px 0;
-  font-size: 14px;
-  line-height: 1.8;
-  text-align: center;
+.card{
+    height:110px;
+    background:linear-gradient(145deg,#050505,#111);
+    border:1px solid #222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size:13px;
+    color:orange;
 }
 
-.contact span { color: var(--orange); }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
+/* ===== CONTACT ===== */
+.contact{
+    margin-top:40px;
+    border-top:1px solid #222;
+    padding-top:25px;
 }
 
-footer .k { color: var(--orange); }
+.contact a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ddd;
+    text-decoration:none;
+    margin-bottom:12px;
+}
 
+.contact i{
+    color:orange;
+    font-size:18px;
+}
 </style>
 </head>
 
@@ -184,74 +182,74 @@ footer .k { color: var(--orange); }
 
 <!-- HEADER -->
 <div class="header">
-  <div class="container">
-    <div class="profile-top">
-      <div class="logo">LOGO</div>
-      <div class="stats">
-        <div class="stat">
-          <strong>70k+</strong>
-          Works
-        </div>
-        <div class="stat">
-          <strong class="infinite">∞</strong>
-          Followers
-        </div>
-        <div class="stat">
-          <strong>2</strong>
-          Following
-        </div>
-      </div>
-    </div>
+<div class="overlay">
 
-    <div class="bio">
-      <strong>Inkkme Tattoo Studio</strong><br>
-      Since 2013 | Certified & Award-Winning<br>
-      Versatile Tattoos — All Styles, All Stories<br>
-      <span>“Crafted with precision. Worn with pride.”</span>
+<div class="profile-bar">
+    <div class="profile-pic"></div>
+
+    <div class="stats">
+        <div class="stat">
+            <span>Works</span>
+            <span>70k+</span>
+        </div>
+
+        <div class="stat">
+            <span>Followers</span>
+            <div class="infinity"></div>
+            <div class="arrow">⬆</div>
+        </div>
+
+        <div class="stat">
+            <span>Following</span>
+            <span>2</span>
+        </div>
     </div>
-  </div>
 </div>
 
-<!-- HIGHLIGHTS -->
-<div class="container">
-  <div class="highlights">
+<div class="bio">
+    <h2>Inkkme Tattoo Studio</h2>
+    <p>Since 2013 | Certified & Award-Winning</p>
+    <p>Versatile Custom Tattoos — All Styles, All Stories</p>
+    <p><i>“Crafted with precision. Worn with pride.”</i></p>
+</div>
+
+<div class="highlights">
     <div class="highlight"><div></div>Tattoo</div>
+    <div class="highlight"><div></div>Cover-Ups</div>
     <div class="highlight"><div></div>Piercing</div>
-    <div class="highlight"><div></div>Cover-ups</div>
-    <div class="highlight"><div></div>Laser</div>
+    <div class="highlight"><div></div>Laser Removal</div>
     <div class="highlight"><div></div>Training</div>
     <div class="highlight"><div></div>Pigmentation</div>
-  </div>
 </div>
 
-<!-- MAIN GRID -->
-<div class="container section">
-  <div class="grid">
-    <div class="card">Tattoos</div>
+</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="grid">
+    <div class="card">Tattoo</div>
     <div class="card">Piercing</div>
     <div class="card">Pigmentation</div>
     <div class="card">Laser Removal</div>
-    <div class="card">Training</div>
+    <div class="card">Training Programs</div>
     <div class="card">Awards</div>
     <div class="card">Workshops</div>
     <div class="card">Conventions</div>
-    <div class="card">Reviews</div>
-  </div>
+    <div class="card">Client Reviews</div>
 </div>
 
-<!-- CONTACT -->
-<div class="container contact">
-  📍 Indore, India<br>
-  📞 <span>WhatsApp:</span> +91 8871811212<br>
-  📧 <span>Email:</span> inkkmeartstudio@gmail.com<br>
-  📸 <span>Instagram:</span> @inkkmetattoos<br>
-  👍 <span>Facebook:</span> https://www.facebook.com/share/1AU3yrAcDK/<br>
-  📌 <span>Pinterest:</span> https://pin.it/1oV5oXv1<br>
+<div class="contact">
+    <a href="https://wa.me/918871811212" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.instagram.com/inkkme_tattoostudio" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/share/1AU3yrAcDK/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://pin.it/1Mt3zi8zS" target="_blank"><i class="fab fa-pinterest"></i> Pinterest</a>
+    <a href="mailto:inkkmetattoostudio@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+    <a href="#"><i class="fas fa-location-dot"></i> 103, 1st Floor, C-25 Girnar Plaza, MIG Main Road, Indore</a>
 </div>
 
-<footer>
-  INK<span class="k">K</span>ME
-</footer>
+</div>
 
 </body>
 </html>
