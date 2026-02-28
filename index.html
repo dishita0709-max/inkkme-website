@@ -8,38 +8,76 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 body{background:#000;color:#fff;display:flex;justify-content:center;}
-.app{width:100%;max-width:430px;min-height:100vh;}
+.app{width:100%;max-width:430px;min-height:100vh;background:#000;}
 
 /* HEADER */
 .header{padding:20px;}
 .top{display:flex;align-items:center;}
-.logo{width:90px;height:90px;border-radius:50%;border:2px solid orange;background:#111;display:flex;align-items:center;justify-content:center;font-weight:bold;}
+.logo img{width:120px;height:auto;}
 .stats{display:flex;justify-content:space-around;flex:1;}
 .stat{text-align:center;cursor:pointer;}
+.stat .num{font-size:16px;font-weight:600;}
+.stat .label{font-size:12px;opacity:.8;}
 .infinity{font-size:22px;color:orange;}
 
-/* BIO */
 .bio{margin-top:10px;font-size:13px;line-height:1.4;}
 
 /* HIGHLIGHTS */
 .highlights{display:flex;gap:14px;overflow-x:auto;padding:14px;}
 .highlight{text-align:center;cursor:pointer;}
-.highlight .circle{width:68px;height:68px;border-radius:50%;border:2px solid orange;background:#111;}
+.highlight .circle{
+width:68px;height:68px;border-radius:50%;
+border:2px solid orange;background:#111;
+}
 .highlight span{font-size:11px;margin-top:5px;display:block;}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.grid-item{
+aspect-ratio:1/1;background:#111;
+display:flex;align-items:center;justify-content:center;
+text-align:center;font-size:13px;padding:10px;
+transition:.3s;cursor:pointer;
+}
+.grid-item:hover{background:#1a1a1a;color:orange;}
+
+/* FOOTER */
+.footer{padding:30px 20px;text-align:center;border-top:1px solid #222;}
+.footer-logo img{width:120px;margin-bottom:15px;}
+.footer-info{font-size:12px;margin-bottom:15px;opacity:.8;}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-bottom:15px;}
+.footer-links a{color:white;text-decoration:none;font-size:12px;}
+.footer-links a:hover{color:orange;}
+.copyright{font-size:11px;opacity:.6;}
 
 /* PAGES */
 .page{display:none;}
 .page.active{display:block;}
-
 .topbar{display:flex;align-items:center;padding:12px;}
 .back{font-size:22px;cursor:pointer;}
 
-/* STORY VIEW */
+/* STORY */
 .story{height:85vh;display:flex;align-items:center;justify-content:center;position:relative;}
-.story-box{width:90%;height:100%;background:#111;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:18px;text-align:center;}
+.story-box{
+width:90%;height:100%;background:#111;border-radius:14px;
+display:flex;align-items:center;justify-content:center;
+font-size:18px;text-align:center;padding:20px;
+}
 .tap{position:absolute;top:0;width:50%;height:100%;}
 .tap.left{left:0;}
 .tap.right{right:0;}
+
+/* FOLLOWERS ARROW */
+.arrow{
+font-size:80px;
+color:orange;
+animation:up 1.5s infinite;
+}
+@keyframes up{
+0%{transform:translateY(10px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(10px);}
+}
 </style>
 </head>
 
@@ -48,58 +86,137 @@ body{background:#000;color:#fff;display:flex;justify-content:center;}
 
 <!-- MAIN PAGE -->
 <div id="main" class="page active">
-  <div class="header">
-    <div class="top">
-      <div class="logo">LOGO</div>
-      <div class="stats">
-        <div class="stat"><div>70k+</div><small>Works</small></div>
-        <div class="stat" onclick="openFollowers()"><div class="infinity">∞</div><small>Followers</small></div>
-        <div class="stat"><div>2</div><small>Following</small></div>
-      </div>
-    </div>
 
-    <div class="bio">
-      <b>Inkkme Tattoo Studio</b><br>
-      Since 2013 | Certified & Award-Winning<br>
-      Versatile Custom Tattoos — All Styles, All Stories<br>
-      “Crafted with precision. Worn with pride.”
-    </div>
-  </div>
+<div class="header">
+<div class="top">
 
-  <!-- HIGHLIGHTS -->
-  <div class="highlights">
-    <div class="highlight" onclick="openHighlight('Tattoo')"><div class="circle"></div><span>Tattoo</span></div>
-    <div class="highlight" onclick="openHighlight('Piercing')"><div class="circle"></div><span>Piercing</span></div>
-    <div class="highlight" onclick="openHighlight('Laser')"><div class="circle"></div><span>Laser</span></div>
-    <div class="highlight" onclick="openHighlight('Pigmentation')"><div class="circle"></div><span>Pigmentation</span></div>
-    <div class="highlight" onclick="openHighlight('Training')"><div class="circle"></div><span>Training</span></div>
-    <div class="highlight" onclick="openHighlight('Coverups')"><div class="circle"></div><span>Cover-ups</span></div>
-  </div>
+<div class="logo">
+<img src="logo.png" alt="Inkkme Logo">
+</div>
+
+<div class="stats">
+<div class="stat">
+<div class="num">70k+</div>
+<div class="label">Works</div>
+</div>
+
+<div class="stat" onclick="openFollowers()">
+<div class="infinity">∞</div>
+<div class="label">Followers</div>
+</div>
+
+<div class="stat">
+<div class="num">2</div>
+<div class="label">Following</div>
+</div>
+</div>
+</div>
+
+<div class="bio">
+<strong>Inkkme Tattoo Studio</strong><br>
+Since 2013 | Certified & Award-Winning<br>
+Versatile Custom Tattoos — All Styles, All Stories<br>
+“Crafted with precision. Worn with pride.”
+</div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+<div class="highlight" onclick="openHighlight('Tattoo')">
+<div class="circle"></div>
+<span>Tattoo</span>
+</div>
+
+<div class="highlight" onclick="openHighlight('Piercing')">
+<div class="circle"></div>
+<span>Piercing</span>
+</div>
+
+<div class="highlight" onclick="openHighlight('Laser')">
+<div class="circle"></div>
+<span>Laser</span>
+</div>
+
+<div class="highlight" onclick="openHighlight('Pigmentation')">
+<div class="circle"></div>
+<span>Pigmentation</span>
+</div>
+
+<div class="highlight" onclick="openHighlight('Training')">
+<div class="circle"></div>
+<span>Training</span>
+</div>
+
+<div class="highlight" onclick="openHighlight('Coverups')">
+<div class="circle"></div>
+<span>Cover-ups</span>
+</div>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+<div class="grid-item">Tattoo Services</div>
+<div class="grid-item">Piercing Services</div>
+<div class="grid-item">Laser Removal</div>
+<div class="grid-item">Pigmentation</div>
+<div class="grid-item">Training Programs</div>
+<div class="grid-item">Awards & Recognition</div>
+<div class="grid-item">Workshops</div>
+<div class="grid-item">Tattoo Conventions</div>
+<div class="grid-item">Client Reviews</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<div class="footer-logo">
+<img src="logo.png" alt="Inkkme Logo">
+</div>
+
+<div class="footer-info">
+103, 1st Floor C-25 Girnar Plaza<br>
+MIG Main Road, Opp MIG Police Station<br>
+Indore 452001
+</div>
+
+<div class="footer-links">
+<a href="https://wa.me/918871811212" target="_blank">WhatsApp</a>
+<a href="https://www.instagram.com/inkkmetattoos" target="_blank">Instagram</a>
+<a href="https://www.facebook.com/share/1AU3yrAcDK/" target="_blank">Facebook</a>
+<a href="https://pin.it/1Mt3zi8zS" target="_blank">Pinterest</a>
+<a href="mailto:inkkmeartstudio@gmail.com">Email</a>
+</div>
+
+<div class="copyright">
+©️ 2013–2026 Inkkme Tattoo Studio
+</div>
+</div>
+
 </div>
 
 <!-- FOLLOWERS PAGE -->
 <div id="followers" class="page">
-  <div class="topbar">
-    <div class="back" onclick="goHome()">←</div>
-  </div>
-  <div class="story" style="flex-direction:column;justify-content:center;">
-    <div class="story-box">Followers Page</div>
-    <div style="margin-top:10px; font-size:16px;">∞</div>
-  </div>
+<div class="topbar">
+<div class="back" onclick="goHome()">←</div>
+</div>
+
+<div class="story" style="flex-direction:column;">
+<div class="arrow">↑</div>
+<div style="margin-top:20px;font-size:18px;">Growing Forever</div>
+</div>
 </div>
 
 <!-- STORY PAGE -->
 <div id="storyPage" class="page">
-  <div class="topbar">
-    <div class="back" onclick="goHome()">←</div>
-    <div id="storyTitle" style="margin-left:10px;"></div>
-  </div>
+<div class="topbar">
+<div class="back" onclick="goHome()">←</div>
+<div id="storyTitle" style="margin-left:10px;"></div>
+</div>
 
-  <div class="story">
-    <div class="tap left" onclick="prevStory()"></div>
-    <div class="story-box" id="storyContent"></div>
-    <div class="tap right" onclick="nextStory()"></div>
-  </div>
+<div class="story">
+<div class="tap left" onclick="prevStory()"></div>
+<div class="story-box" id="storyContent"></div>
+<div class="tap right" onclick="nextStory()"></div>
+</div>
 </div>
 
 </div>
@@ -109,70 +226,40 @@ let currentHighlight="";
 let index=0;
 
 const stories={
-  "Tattoo":[
-    "Minimalist","Fine Line","Line Art","Micro Tattoos","Geometric","Mandala","Dotwork","Blackwork","Blackout",
-    "Tribal","Polynesian","Maori","Celtic","Ornamental","Sacred Geometry","Floral","Botanical","Nature",
-    "Animal","Bird","Mythical Creatures","Dragon","Phoenix","Angel","Demon","Skull","Gothic","Dark Art","Horror",
-    "Chicano","Lettering","Calligraphy","Typography","Quotes","Name Tattoos","Portrait (Realistic)","Black & Grey Realism",
-    "Color Realism","Hyper-Realism","3D","Surreal","Abstract","Watercolor","Trash Polka","Neo-Traditional","Traditional (Old School)",
-    "New School","Japanese (Irezumi)","Anime / Manga","Pop Culture","Movie / Series Inspired","Gaming Tattoos","Music / Band",
-    "Patchwork Tattoos","Flash Tattoos","Cyber Sigilism","Zodiac","Astrology","Celestial (Sun, Moon, Stars)","Spiritual",
-    "Om & Sanskrit","Yantra","Chakra","Temple / Mandir Art","Lord Shiva","Lord Vishnu","Lord Brahma","Lord Ganesha",
-    "Lord Hanuman","Lord Rama","Lord Krishna","Ravan","Lord Kartikeya (Murugan)","Lord Narasimha","Lord Venkateshwara (Balaji)",
-    "Goddess Durga","Goddess Kali","Goddess Lakshmi","Goddess Saraswati","Goddess Parvati","Goddess Radha",
-    "Navgraha","Warrior / Mahakal Art","Couple / Bond Tattoos","Fine-Detail Custom Tattoos","Custom Concept Tattoos",
-    "Scar-Cover Tattoos"
-  ],
-  "Piercing":[
-    "Lobe","Upper Lobe","Helix","Forward Helix","Flat","Conch","Tragus","Anti-Tragus","Daith","Rook",
-    "Snug","Industrial","Orbital","Vertical Industrial","Eyebrow","Bridge","Nostril","High Nostril","Septum",
-    "Cheek (Dimple)","Anti-Eyebrow","Labret","Vertical Labret","Medusa (Philtrum)","Monroe","Madonna",
-    "Snake Bites","Spider Bites","Angel Bites","Smiley","Frowny","Tongue","Navel","Inverse Navel",
-    "Nipple","Chest","Surface Piercing","Microdermal","Collarbone","Wrist","Hip","Custom / Anatomy-Based Piercing"
-  ],
-  "Laser":["Before Laser","After Laser","Fade Process"],
-  "Pigmentation":["Lip Pigmentation","Scalp Pigmentation"],
-  "Training":["Workshop","Live Practice","Certification"],
-  "Coverups":["Name Cover","Dark Cover","Scar Cover","Old Tattoo Cover"]
+Tattoo:["Minimalist","Fine Line","Geometric","Mandala","Realism","Traditional","Japanese","Blackwork"],
+Piercing:["Lobe","Helix","Nostril","Septum","Industrial","Navel"],
+Laser:["Before","After","Fade Process"],
+Pigmentation:["Lip","Scalp"],
+Training:["Workshop","Certification"],
+Coverups:["Name Cover","Dark Cover","Scar Cover"]
 };
 
 function openHighlight(name){
-  currentHighlight=name;
-  index=0;
-  document.getElementById("storyTitle").innerText=name;
-  showStory();
-  showPage("storyPage");
+currentHighlight=name;
+index=0;
+document.getElementById("storyTitle").innerText=name;
+showStory();
+showPage("storyPage");
 }
 
 function showStory(){
-  document.getElementById("storyContent").innerText = stories[currentHighlight][index];
+document.getElementById("storyContent").innerText=stories[currentHighlight][index];
 }
 
 function nextStory(){
-  if(index < stories[currentHighlight].length-1){
-    index++;
-    showStory();
-  }
+if(index < stories[currentHighlight].length-1){index++;showStory();}
 }
 
 function prevStory(){
-  if(index > 0){
-    index--;
-    showStory();
-  }
+if(index > 0){index--;showStory();}
 }
 
-function openFollowers(){
-  showPage("followers");
-}
-
-function goHome(){
-  showPage("main");
-}
+function openFollowers(){showPage("followers");}
+function goHome(){showPage("main");}
 
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 </script>
 
