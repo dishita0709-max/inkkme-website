@@ -2,221 +2,230 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Inkkme Tattoo Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INKKME Tattoo Studio</title>
 
 <style>
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#000;color:#fff;display:flex;justify-content:center;}
+.app{width:100%;max-width:420px;}
 
-body{
-  background:#000;
-  display:flex;
-  justify-content:center;
-  font-family:Arial, Helvetica, sans-serif;
-  color:#fff;
-}
-
-/* MAIN APP */
-.app{
-  width:100%;
-  max-width:420px;
-  padding:16px;
-}
-
-/* HEADER / BIO */
+/* HEADER */
 .header{
-  text-align:center;
-  padding:20px 0;
+  background:url("background-placeholder.jpg") center/cover no-repeat;
+  padding:20px;
 }
-
-.header h1{
-  font-size:28px;
-  letter-spacing:1px;
+.profile{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-
-.header h1 span{
-  color:orange;
-}
-
-.bio{
-  font-size:13px;
-  opacity:0.85;
-  margin-top:8px;
-  line-height:1.4;
+.logo{
+  width:90px;height:90px;
+  border-radius:50%;
+  background:#111;
+  border:2px solid orange;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
 }
 
 /* STATS */
 .stats{
   display:flex;
-  justify-content:space-around;
-  margin:20px 0;
-  text-align:center;
-}
-
-.stat{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-}
-
-.number{
-  font-size:16px;
-  font-weight:600;
-}
-
-.label{
-  font-size:12px;
-  opacity:0.7;
-}
-
-/* INFINITY */
-.infinity-wrapper{
-  width:90px;
-  overflow:hidden;
-}
-
-.infinity-track{
-  display:flex;
-  gap:22px;
-  animation: infinityMove 2.2s linear infinite;
-}
-
-.infinity-track span{
-  font-size:32px;
-  font-weight:700;
-  color:orange;
-}
-
-@keyframes infinityMove{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-50%); }
-}
-
-/* ARROW */
-.followers-arrow{
-  display:none;
-  font-size:16px;
-  color:orange;
-  animation: arrowUp 0.9s infinite;
-}
-
-@keyframes arrowUp{
-  0%{ transform:translateY(6px); opacity:0; }
-  50%{ opacity:1; }
-  100%{ transform:translateY(-12px); opacity:0; }
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:8px;
-  margin-top:20px;
-}
-
-.card{
-  aspect-ratio:1/1;
-  background:#111;
-  border:1px solid #222;
-  display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:12px;
+  gap:28px;
+  margin:15px 0;
+}
+.stat{text-align:center;}
+.stat .num{font-size:16px;font-weight:600;}
+.stat .label{font-size:12px;opacity:.8;}
+.infinity{font-size:22px;color:orange;cursor:pointer;}
+
+/* BIO */
+.bio{text-align:center;font-size:13px;line-height:1.4;}
+.bio b{font-size:14px;}
+.bio em{opacity:.85;}
+
+/* HIGHLIGHTS */
+.highlights{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:12px;
+}
+.highlight{
+  min-width:70px;
   text-align:center;
   cursor:pointer;
 }
+.highlight .circle{
+  width:65px;height:65px;
+  border-radius:50%;
+  border:2px solid orange;
+  background:#111;
+}
+.highlight span{font-size:11px;margin-top:5px;display:block;}
 
-.card:hover{
-  border-color:orange;
+/* PAGES */
+.page{
+  display:none;
+  min-height:100vh;
+  background:#000;
+}
+.page.active{display:block;}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  padding:12px;
+}
+.back{
+  font-size:22px;
+  cursor:pointer;
 }
 
-/* CONTACT */
-.contact{
-  margin:24px 0;
-  font-size:13px;
-  line-height:1.6;
+/* FOLLOWERS PAGE */
+.followers{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:80vh;
 }
-
-.contact a{
+.arrow{
+  font-size:80px;
   color:orange;
-  text-decoration:none;
+  animation:up 1.5s infinite;
+}
+@keyframes up{
+  0%{transform:translateY(10px);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(10px);}
+}
+
+/* SLIDER */
+.slider{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:15px;
+}
+.slide{
+  min-width:220px;
+  height:300px;
+  background:#111;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:.6;
 }
 </style>
 </head>
 
 <body>
-
 <div class="app">
 
-  <!-- HEADER -->
+<!-- MAIN PAGE -->
+<div id="main" class="page active">
   <div class="header">
-    <h1>INKK<span>ME</span></h1>
-    <div class="bio">
-      Inkkme Tattoo Studio<br>
-      Since 2013 | Certified & Award-Winning<br>
-      Versatile Custom Tattoos — All Styles, All Stories<br>
-      “Crafted with precision. Worn with pride.”
-    </div>
-  </div>
+    <div class="profile">
+      <div class="logo">LOGO</div>
 
-  <!-- STATS -->
-  <div class="stats">
+      <div class="stats">
+        <div class="stat">
+          <div class="num">70k+</div>
+          <div class="label">Works</div>
+        </div>
 
-    <div class="stat">
-      <div class="number">70k+</div>
-      <div class="label">Works</div>
-    </div>
+        <div class="stat" onclick="openFollowers()">
+          <div class="infinity">∞</div>
+          <div class="label">Followers</div>
+        </div>
 
-    <div class="stat" onclick="showFollowersArrow()">
-      <div class="infinity-wrapper">
-        <div class="infinity-track">
-          <span>∞</span><span>∞</span><span>∞</span><span>∞</span>
+        <div class="stat">
+          <div class="num">2</div>
+          <div class="label">Following</div>
         </div>
       </div>
-      <div class="followers-arrow">⬆</div>
-      <div class="label">Followers</div>
+
+      <div class="bio">
+        <b>Inkkme Tattoo Studio</b><br>
+        Since 2013 | Certified & Award-Winning<br>
+        Versatile Custom Tattoos — All Styles, All Stories<br>
+        <em>“Crafted with precision. Worn with pride.”</em>
+      </div>
     </div>
+  </div>
 
-    <div class="stat">
-      <div class="number">2</div>
-      <div class="label">Following</div>
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="highlight" onclick="openHighlight('Tattoo')">
+      <div class="circle"></div><span>Tattoo</span>
     </div>
+    <div class="highlight" onclick="openHighlight('Piercing')">
+      <div class="circle"></div><span>Piercing</span>
+    </div>
+    <div class="highlight" onclick="openHighlight('Laser')">
+      <div class="circle"></div><span>Laser</span>
+    </div>
+    <div class="highlight" onclick="openHighlight('Pigmentation')">
+      <div class="circle"></div><span>Pigmentation</span>
+    </div>
+    <div class="highlight" onclick="openHighlight('Training')">
+      <div class="circle"></div><span>Training</span>
+    </div>
+    <div class="highlight" onclick="openHighlight('Coverups')">
+      <div class="circle"></div><span>Cover-ups</span>
+    </div>
+  </div>
+</div>
 
+<!-- FOLLOWERS PAGE -->
+<div id="followers" class="page">
+  <div class="topbar">
+    <div class="back" onclick="goBack()">←</div>
+  </div>
+  <div class="followers">
+    <div class="arrow">↑</div>
+    <div style="margin-top:10px;">Growing Forever</div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT PAGE -->
+<div id="highlightPage" class="page">
+  <div class="topbar">
+    <div class="back" onclick="goBack()">←</div>
+    <div id="highlightTitle" style="margin-left:10px;"></div>
   </div>
 
-  <!-- GRID (9 POSTS) -->
-  <div class="grid">
-    <div class="card">Tattoos</div>
-    <div class="card">Piercing</div>
-    <div class="card">Pigmentation</div>
-    <div class="card">Laser Removal</div>
-    <div class="card">Training</div>
-    <div class="card">Awards</div>
-    <div class="card">Workshops</div>
-    <div class="card">Conventions</div>
-    <div class="card">Reviews</div>
+  <div class="slider">
+    <div class="slide">Photo 1</div>
+    <div class="slide">Photo 2</div>
+    <div class="slide">Photo 3</div>
+    <div class="slide">Photo 4</div>
   </div>
-
-  <!-- CONTACT -->
-  <div class="contact">
-    📍 103, 1st Floor, C-25 Girnar Plaza, MIG Main Road, Indore 452001<br>
-    📞 <a href="https://wa.me/918871811212">WhatsApp</a><br>
-    📷 <a href="https://www.instagram.com/inkkmetattoos" target="_blank">Instagram</a><br>
-    📘 <a href="https://www.facebook.com/share/1AU3yrAcDK/" target="_blank">Facebook</a><br>
-    📌 <a href="https://pin.it/1Mt3zi8zS" target="_blank">Pinterest</a>
-  </div>
+</div>
 
 </div>
 
 <script>
-function showFollowersArrow(){
-  document.querySelector('.followers-arrow').style.display = 'block';
+function openFollowers(){
+  document.getElementById("main").classList.remove("active");
+  document.getElementById("followers").classList.add("active");
+}
+
+function openHighlight(name){
+  document.getElementById("main").classList.remove("active");
+  document.getElementById("highlightPage").classList.add("active");
+  document.getElementById("highlightTitle").innerText=name;
+}
+
+function goBack(){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("main").classList.add("active");
 }
 </script>
 
