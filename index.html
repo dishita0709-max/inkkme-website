@@ -1,243 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Inkkme Tattoo Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inkkme Tattoo Studio</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0b0b0b;
+  --orange: #ff7a00;
+  --white: #fff;
+  --gray: #999;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+/* GENERAL */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+body {
+  background: var(--black);
+  color: var(--white);
+}
+a { color: var(--orange); text-decoration: none; }
 
-    body {
-      background: #000;
-      color: #fff;
-    }
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-    /* HEADER */
-    .header {
-      height: 90vh;
-      background: url('BACKGROUND_PLACEHOLDER.jpg') center/cover no-repeat;
-      position: relative;
-    }
+/* HEADER */
+.header {
+  height: 70vh;
+  background: #111; /* Replace with studio photo later */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 
-    .overlay {
-      background: rgba(0,0,0,0.65);
-      height: 100%;
-      padding: 30px;
-    }
+.profile-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-    .top-bar {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+.logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-    .logo {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-    }
+.stats {
+  display: flex;
+  gap: 25px;
+  font-size: 14px;
+}
 
-    .stats {
-      display: flex;
-      gap: 30px;
-      font-size: 14px;
-    }
+.stat {
+  text-align: center;
+}
 
-    .stats div {
-      text-align: center;
-    }
+.stat strong {
+  display: block;
+  font-size: 18px;
+}
 
-    .infinite {
-      animation: spin 4s linear infinite;
-      color: orange;
-      font-size: 20px;
-    }
+.infinite {
+  display: inline-block;
+  animation: spin 4s linear infinite;
+  color: var(--orange);
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-    .bio {
-      margin-top: 25px;
-      max-width: 500px;
-    }
+/* BIO */
+.bio {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
 
-    .bio h1 span {
-      color: orange;
-    }
+.bio span { color: var(--orange); }
 
-    .highlights {
-      display: flex;
-      gap: 15px;
-      margin-top: 25px;
-    }
+/* HIGHLIGHTS */
+.highlights {
+  display: flex;
+  gap: 15px;
+  padding: 20px 0;
+  overflow-x: auto;
+  justify-content: center;
+}
 
-    .highlight {
-      width: 70px;
-      text-align: center;
-      font-size: 11px;
-      cursor: pointer;
-    }
+.highlight {
+  min-width: 70px;
+  text-align: center;
+  font-size: 12px;
+}
 
-    .highlight-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 2px solid orange;
-      margin-bottom: 6px;
-    }
+.highlight div {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  margin-bottom: 5px;
+  background: #222;
+}
 
-    /* MAIN GRID */
-    .main {
-      padding: 40px 20px;
-    }
+/* MAIN GRID */
+.section {
+  padding: 15px 0;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  justify-items: center;
+}
 
-    .card {
-      background: linear-gradient(145deg, #000, #111);
-      border: 1px solid #222;
-      height: 110px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(145deg, #111, #1b1b1b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #222;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .card:hover {
-      border-color: orange;
-    }
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255,122,0,0.3);
+}
 
-    /* CONTACT */
-    .contact {
-      padding: 40px 20px;
-      border-top: 1px solid #222;
-      font-size: 13px;
-    }
+/* CONTACT */
+.contact {
+  padding: 20px 0;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
 
-    .contact p {
-      margin-bottom: 8px;
-    }
+.contact span { color: var(--orange); }
 
-    .brand {
-      margin-top: 30px;
-      font-size: 26px;
-      font-weight: 600;
-      text-align: center;
-    }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    .brand span {
-      color: orange;
-    }
-  </style>
+footer .k { color: var(--orange); }
+
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <section class="header">
-    <div class="overlay">
-
-      <div class="top-bar">
-        <div class="logo">LOGO</div>
-
-        <div class="stats">
-          <div>
-            <strong>Works</strong><br>70k+
-          </div>
-          <div>
-            <strong>Followers</strong><br>
-            <span class="infinite">∞</span>
-          </div>
-          <div>
-            <strong>Following</strong><br>2
-          </div>
+<!-- HEADER -->
+<div class="header">
+  <div class="container">
+    <div class="profile-top">
+      <div class="logo">LOGO</div>
+      <div class="stats">
+        <div class="stat">
+          <strong>70k+</strong>
+          Works
+        </div>
+        <div class="stat">
+          <strong class="infinite">∞</strong>
+          Followers
+        </div>
+        <div class="stat">
+          <strong>2</strong>
+          Following
         </div>
       </div>
-
-      <div class="bio">
-        <h1>Inkkme Tattoo Studio</h1>
-        <p>Since 2013 | Certified & Award-Winning</p>
-        <p>Versatile Custom Tattoos — All Styles, All Stories</p>
-        <p><em>“Crafted with precision. Worn with pride.”</em></p>
-      </div>
-
-      <div class="highlights">
-        <div class="highlight">
-          <div class="highlight-circle"></div>
-          Tattoo
-        </div>
-        <div class="highlight">
-          <div class="highlight-circle"></div>
-          Cover-ups
-        </div>
-        <div class="highlight">
-          <div class="highlight-circle"></div>
-          Piercing
-        </div>
-        <div class="highlight">
-          <div class="highlight-circle"></div>
-          Laser
-        </div>
-        <div class="highlight">
-          <div class="highlight-circle"></div>
-          Training
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- MAIN GRID -->
-  <section class="main">
-    <div class="grid">
-      <div class="card">Tattoo</div>
-      <div class="card">Piercing</div>
-      <div class="card">Pigmentation</div>
-      <div class="card">Laser Removal</div>
-      <div class="card">Training</div>
-      <div class="card">Awards</div>
-      <div class="card">Workshops</div>
-      <div class="card">Conventions</div>
-      <div class="card">Reviews</div>
+    <div class="bio">
+      <strong>Inkkme Tattoo Studio</strong><br>
+      Since 2013 | Certified & Award-Winning<br>
+      Versatile Tattoos — All Styles, All Stories<br>
+      <span>“Crafted with precision. Worn with pride.”</span>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <p>📍 Location – To be added</p>
-    <p>📞 WhatsApp – To be added</p>
-    <p>📧 Email – To be added</p>
-    <p>📸 Instagram – @inkkmetattoos</p>
-    <p>📘 Facebook – To be added</p>
-    <p>📌 Pinterest – To be added</p>
+<!-- HIGHLIGHTS -->
+<div class="container">
+  <div class="highlights">
+    <div class="highlight"><div></div>Tattoo</div>
+    <div class="highlight"><div></div>Piercing</div>
+    <div class="highlight"><div></div>Cover-ups</div>
+    <div class="highlight"><div></div>Laser</div>
+    <div class="highlight"><div></div>Training</div>
+    <div class="highlight"><div></div>Pigmentation</div>
+  </div>
+</div>
 
-    <div class="brand">
-      INK<span>K</span>ME
-    </div>
-  </section>
+<!-- MAIN GRID -->
+<div class="container section">
+  <div class="grid">
+    <div class="card">Tattoos</div>
+    <div class="card">Piercing</div>
+    <div class="card">Pigmentation</div>
+    <div class="card">Laser Removal</div>
+    <div class="card">Training</div>
+    <div class="card">Awards</div>
+    <div class="card">Workshops</div>
+    <div class="card">Conventions</div>
+    <div class="card">Reviews</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="container contact">
+  📍 Indore, India<br>
+  📞 <span>WhatsApp:</span> +91 8871811212<br>
+  📧 <span>Email:</span> inkkmeartstudio@gmail.com<br>
+  📸 <span>Instagram:</span> @inkkmetattoos<br>
+  👍 <span>Facebook:</span> https://www.facebook.com/share/1AU3yrAcDK/<br>
+  📌 <span>Pinterest:</span> https://pin.it/1oV5oXv1<br>
+</div>
+
+<footer>
+  INK<span class="k">K</span>ME
+</footer>
 
 </body>
 </html>
